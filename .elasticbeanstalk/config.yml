@@ -1,0 +1,4 @@
+global:
+  profile: eb-cli
+deploy:
+     artifact: gs-rest-service/gs-rest-service-0.1.0.jar
