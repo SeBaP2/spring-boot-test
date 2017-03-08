@@ -53,6 +53,7 @@
                     <cnamePrefix>spring-boot-test.eu-central-1</cnamePrefix>
                     <environmentName>spring-boot-test-env</environmentName>
                     <environmentRef>spring-boot-test-env</environmentRef>
+                    <regionName>eu-central-1</regionName>
                     <s3Bucket>bucket-spring-boot-test</s3Bucket>
                     <s3Key>${project.artifactId}/${project.build.finalName}.jar</s3Key>
                     <solutionStack>64bit Amazon Linux 2016.09 v2.4.2 running Java 8</solutionStack>
