@@ -14,7 +14,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/")
-    public Greeting greeting(@RequestParam(value="name") String name) {
+    public Greeting greeting(@RequestParam(value="name", defaultValue = "") String name) {
         if (StringUtils.isEmpty(name)) {
             return new Greeting(counter.incrementAndGet(), "Brakuje parametru 'name', dodaj go do linka w takiej formie: ?name=imie");
         }
