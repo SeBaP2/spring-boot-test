@@ -1,2 +1,2 @@
 server:
-  port: 80
+  port: 5000 # Nginx in AWS Elastic Beanstalk listens on 5000 port at default
