@@ -32,16 +32,18 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
     </properties>
 
-
     <build>
         <plugins>
+            
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            
             <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>beanstalk-maven-plugin</artifactId>
@@ -50,11 +52,13 @@
                     <applicationName>spring-boot-test</applicationName>
                     <cnamePrefix>spring-boot-test.eu-central-1</cnamePrefix>
                     <environmentName>spring-boot-test-env</environmentName>
+                    <environmentRef>spring-boot-test-env</environmentRef>
                     <s3Bucket>bucket-spring-boot-test</s3Bucket>
                     <s3Key>${project.artifactId}/${project.build.finalName}.jar</s3Key>
-                    <!--<s3Key>${project.artifactId}/${project.build.finalName}-${beanstalk.versionLabel}.war</s3Key>-->
+                    <solutionStack>64bit Amazon Linux 2016.09 v2.4.2 running Java 8</solutionStack>
                 </configuration>
             </plugin>
+            
         </plugins>
     </build>
 
@@ -64,10 +68,12 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
     </repositories>
+    
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
+    
 </project>
