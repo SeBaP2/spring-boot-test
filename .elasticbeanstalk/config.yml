@@ -1,4 +1,18 @@
-global:
-  profile: eb-cli
+branch-defaults:
+  default:
+    environment: spring-boot-test-env
+    group_suffix: null
+  master:
+    environment: spring-boot-test-env
+    group_suffix: null
 deploy:
-     artifact: target/gs-rest-service-0.1.0.jar
+  artifact: target/gs-rest-service-0.1.0.jar
+global:
+  application_name: spring-boot-test
+  branch: null
+  default_ec2_keyname: aws
+  default_platform: Java 8
+  default_region: eu-central-1
+  profile: eb-cli
+  repository: null
+  sc: null
