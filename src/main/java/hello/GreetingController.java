@@ -16,7 +16,7 @@ public class GreetingController {
     @RequestMapping("/")
     public Greeting greeting(@RequestParam(value="name") String name) {
         if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("Brakuje parametru 'name', dodaj go do linka w takiej formie: ?name=imie");
+            return new Greeting(counter.incrementAndGet(), "Brakuje parametru 'name', dodaj go do linka w takiej formie: ?name=imie");
         }
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
