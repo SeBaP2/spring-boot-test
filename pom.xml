@@ -56,7 +56,7 @@
                     <regionName>eu-central-1</regionName>
                     <s3Bucket>bucket-spring-boot-test</s3Bucket>
                     <s3Key>${project.artifactId}/${project.build.finalName}.jar</s3Key>
-                    <solutionStack>64bit Amazon Linux 2016.09 v2.4.2 running Java 8</solutionStack>
+                    <solutionStack>64bit Amazon Linux 2016.09 v2.4.3 running Java 8</solutionStack>
                 </configuration>
             </plugin>
             
