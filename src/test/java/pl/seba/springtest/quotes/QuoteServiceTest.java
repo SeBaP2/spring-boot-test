@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
@@ -33,7 +34,6 @@ public class QuoteServiceTest {
     @Test
     public void shouldThrowExceptionWhenNoConnection() throws RestClientException {
         when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenThrow(RestClientException.class);
-
         expectedException.expect(RestClientException.class);
 
         quoteService.randomQuote();
@@ -45,6 +45,7 @@ public class QuoteServiceTest {
 
         List<Quote> quotes = quoteService.randomQuote();
 
+        assertThat(quotes, hasSize(Fixtures.QUOTES_ARRAY.length));
         assertThat(quotes, hasItem(Fixtures.QUOTE));
     }
 
