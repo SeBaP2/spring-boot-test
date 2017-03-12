@@ -1,6 +1,12 @@
 server:
   port: 5000 # Nginx in AWS Elastic Beanstalk listens on 5000 port at default
 
+
+spring:
+  jackson:
+    serialization:
+      indent_output: true # Pretty-print JSON responses
+
 quotes:
   feeds:
     random: http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1
