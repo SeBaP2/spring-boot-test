@@ -30,3 +30,6 @@ dependencies {
     testCompile('com.jayway.jsonpath:json-path')
 }
 
+springBoot {
+    mainClass = "pl.seba.springtest.Main"
+}
