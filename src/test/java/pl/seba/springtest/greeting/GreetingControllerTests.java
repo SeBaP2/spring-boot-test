@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,7 +28,8 @@ public class GreetingControllerTests {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+                .andExpect(jsonPath("$.content")
+                        .value("Brakuje parametru 'name', dodaj go do linka w takiej formie: ?name=imie"));
     }
 
     @Test
@@ -37,7 +37,8 @@ public class GreetingControllerTests {
 
         this.mockMvc.perform(get("/").param("name", "Spring Community"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.content")
+                        .value("Witaj, Spring Community, wszystkiego najlepszego z okazji Dnia Kobiet!!!"));
     }
 
 }
