@@ -1,4 +1,4 @@
-package hello;
+package pl.seba.springtest.greeting;
 
 public class Greeting {
 
