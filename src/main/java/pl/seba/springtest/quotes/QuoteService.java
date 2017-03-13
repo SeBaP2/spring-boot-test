@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuoteService {
@@ -21,7 +20,15 @@ public class QuoteService {
         restTemplate = new RestTemplate();
     }
 
-    public List<Quote> randomQuote() {
-        return Arrays.asList(restTemplate.getForObject(randomQuoteFeed, Quote[].class));
+    public Quote randomQuote() {
+        Optional<Quote[]> quotes = Optional.ofNullable(restTemplate.getForObject(randomQuoteFeed, Quote[].class));
+        return firstQuoteOrDefault(quotes);
+    }
+
+    private Quote firstQuoteOrDefault(Optional<Quote[]> quotes) {
+        return quotes
+                .filter(q -> q.length > 0)
+                .map(q -> q[0])
+                .orElse(new Quote());
     }
 }

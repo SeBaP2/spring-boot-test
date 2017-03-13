@@ -1,7 +1,6 @@
 server:
   port: 5000 # Nginx in AWS Elastic Beanstalk listens on 5000 port at default
 
-
 spring:
   jackson:
     serialization:

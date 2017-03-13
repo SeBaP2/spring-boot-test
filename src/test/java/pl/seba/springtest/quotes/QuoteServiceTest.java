@@ -10,11 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
@@ -40,18 +37,58 @@ public class QuoteServiceTest {
     }
 
     @Test
-    public void shouldReturnQuote() throws Exception {
-        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(Fixtures.QUOTES_ARRAY);
+    public void shouldReturnQuote() throws RestClientException {
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(Fixtures.QUOTES_ARRAY_1_ITEM);
 
-        List<Quote> quotes = quoteService.randomQuote();
+        Quote quote = quoteService.randomQuote();
 
-        assertThat(quotes, hasSize(Fixtures.QUOTES_ARRAY.length));
-        assertThat(quotes, hasItem(Fixtures.QUOTE));
+        assertThat(quote, is(Fixtures.QUOTE_1));
+    }
+
+    @Test
+    public void shouldReturnFirstQuoteWhenMoreThanOneIsFound() throws RestClientException {
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(Fixtures.QUOTES_ARRAY_2_ITEMS);
+
+        Quote quote = quoteService.randomQuote();
+
+        assertThat(quote, is(Fixtures.QUOTE_1));
+    }
+
+    @Test
+    public void shouldReturnEmptyQuoteWhenNoQuotesFound() throws RestClientException {
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(Fixtures.QUOTES_ARRAY_EMPTY);
+
+        Quote quote = quoteService.randomQuote();
+
+        assertThat(quote, is(Fixtures.QUOTE_0));
+    }
+
+    @Test
+    public void shouldReturnEmptyQuoteWhenNullQuoteFound() throws RestClientException {
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(Fixtures.QUOTES_ARRAY_NULL_ITEM);
+
+        Quote quote = quoteService.randomQuote();
+
+        assertThat(quote, is(Fixtures.QUOTE_0));
+    }
+
+    @Test
+    public void shouldReturnEmptyQuoteRestClientReturnsNull() throws RestClientException {
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenReturn(null);
+
+        Quote quote = quoteService.randomQuote();
+
+        assertThat(quote, is(Fixtures.QUOTE_0));
     }
 
     private static final class Fixtures {
-        private static final Quote QUOTE = new Quote(1L, "title", "content", "link");
-        private static final Quote[] QUOTES_ARRAY = { QUOTE };
+        private static final Quote QUOTE_0 = new Quote();
+        private static final Quote QUOTE_1 = new Quote(1L, "title1", "content1", "link1");
+        private static final Quote QUOTE_2 = new Quote(2L, "title2", "content2", "link2");
+        private static final Quote[] QUOTES_ARRAY_EMPTY = {};
+        private static final Quote[] QUOTES_ARRAY_NULL_ITEM = { null };
+        private static final Quote[] QUOTES_ARRAY_1_ITEM = { QUOTE_1 };
+        private static final Quote[] QUOTES_ARRAY_2_ITEMS = { QUOTE_1, QUOTE_2 };
     }
 
 }

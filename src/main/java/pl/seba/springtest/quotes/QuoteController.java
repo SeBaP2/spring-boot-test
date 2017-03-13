@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class QuoteController {
 
@@ -13,7 +11,7 @@ public class QuoteController {
     private QuoteService quoteService;
 
     @RequestMapping("/quotes/random")
-    public List<Quote> randomQuote() {
+    public Quote randomQuote() {
         return quoteService.randomQuote();
     }
 }
