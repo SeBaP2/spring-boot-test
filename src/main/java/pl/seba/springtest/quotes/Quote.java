@@ -2,10 +2,12 @@ package pl.seba.springtest.quotes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(value = {"ID", "title", "content", "link"})
 public final class Quote {
 
     @JsonProperty("ID")
