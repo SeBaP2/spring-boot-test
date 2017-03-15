@@ -1,9 +1,6 @@
 language: java
 jdk: oraclejdk8
 
-before_install:
- - chmod +x gradlew
-
 cache:
   directories:
     - $HOME/.gradle/caches/
@@ -12,4 +9,10 @@ cache:
 notifications:
  email: false
 
+before_install:
+ - chmod +x gradlew
+
 script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install -e beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+
+after_success:
+- ./gradlew cobertura coveralls
