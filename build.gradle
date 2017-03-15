@@ -37,4 +37,5 @@ pitest {
     targetClasses = ['pl.seba.springtest.*']
     threads = 4
     outputFormats = ['xml', 'html']
+    timestampedReports = false
 }
