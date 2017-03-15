@@ -30,7 +30,7 @@ public class QuoteServiceTest {
 
     @Test
     public void shouldThrowExceptionWhenNoConnection() throws RestClientException {
-        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenThrow(RestClientException.class);
+        when(restTemplateMock.getForObject(anyString(), eq(Quote[].class))).thenThrow(new RestClientException(""));
         expectedException.expect(RestClientException.class);
 
         quoteService.randomQuote();
