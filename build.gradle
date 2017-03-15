@@ -8,6 +8,7 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
+    id 'jacoco'
     id 'org.springframework.boot' version '1.5.2.RELEASE'
     id 'net.saliman.cobertura' version '2.4.0'
 //    id 'info.solidsoft.pitest' version '1.1.11'
@@ -39,3 +40,10 @@ cobertura {
 //    outputFormats = ['xml', 'html']
 //    timestampedReports = false
 //}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
