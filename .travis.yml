@@ -15,4 +15,4 @@ before_install:
 script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install -e beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
 
 after_success:
-- ./gradlew pitest coveralls
+- ./gradlew cobertura pitest coveralls
