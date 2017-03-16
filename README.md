@@ -13,5 +13,5 @@ Just some small projects to play with SpringBoot on GitHub with TravisCI and AWS
  [4]: https://coveralls.io/github/SeBaP2/spring-boot-test?branch=master
  [5]: https://codecov.io/gh/SeBaP2/spring-boot-test/coverage.svg?branch=master
  [6]: https://codecov.io/gh/SeBaP2/spring-boot-test?branch=master
- [7]: https://www.codefactor.io/repository/github/pomona/pomona/badge/master
- [8]: https://www.codefactor.io/repository/github/pomona/pomona/overview/master
+ [7]: https://www.codefactor.io/repository/github/SeBaP2/spring-boot-test/badge/master
+ [8]: https://www.codefactor.io/repository/github/SeBaP2/spring-boot-test/overview/master
