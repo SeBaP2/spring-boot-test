@@ -17,7 +17,8 @@ before_install:
 #  - ./gradlew clean build -i --continue
 
 after_success:
- - ls
+ - ls --all
+ - ls build/libs/
 # - ./gradlew cobertura coveralls
 #- ./gradlew pitest coveralls
 # - ./gradlew check
