@@ -7,12 +7,14 @@ cache:
     - $HOME/.gradle/wrapper/
 
 notifications:
- email: false
+  email: false
 
 before_install:
  - chmod +x gradlew
 
-script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install -e beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+#script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install -e beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+#script:
+#  - ./gradlew clean build -i --continue
 
 after_success:
  - ./gradlew cobertura coveralls
@@ -20,3 +22,20 @@ after_success:
  - ./gradlew check
  - ./gradlew jacocoTestReport
  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: $AWS_ACCESS_KEY_ID
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+  region: eu-central-1
+  app: spring-boot-test
+  env: spring-boot-test-env
+  bucket_name: bucket-spring-boot-test
+  skip_cleanup: true
+  zip_file: build/libs/spring-boot-test-0.0.1.jar
+#  on:
+#    repo: SeBaP2/spring-boot-test
+#    branch: decrease-deploy-time
+#    branch: master
