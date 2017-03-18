@@ -34,7 +34,7 @@ deploy:
   env: spring-boot-test-env
   bucket_name: bucket-spring-boot-test
   skip_cleanup: true
-  zip_file: build/libs/spring-boot-test-0.0.1.jar
+#  zip_file: build/libs/spring-boot-test-0.0.1.jar
   on:
     repo: SeBaP2/spring-boot-test
     branch: decrease-deploy-time
