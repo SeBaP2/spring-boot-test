@@ -41,3 +41,7 @@ deploy:
     repo: SeBaP2/spring-boot-test
     branch: decrease-deploy-time
 #    branch: master
+
+addons:
+  artifacts: true
+  debug: true
