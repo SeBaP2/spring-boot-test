@@ -1,0 +1,2 @@
+deploy:
+  artifact: build/libs/spring-boot-test-0.0.1.jar
