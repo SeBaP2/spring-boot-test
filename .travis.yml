@@ -17,12 +17,11 @@ before_install:
 #  - ./gradlew clean build -i --continue
 
 after_success:
- - ls
-# - ./gradlew cobertura coveralls
+ - ./gradlew cobertura coveralls
 #- ./gradlew pitest coveralls
-# - ./gradlew check
-# - ./gradlew jacocoTestReport
-# - bash <(curl -s https://codecov.io/bash)
+ - ./gradlew check
+ - ./gradlew jacocoTestReport
+ - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   provider: elasticbeanstalk
