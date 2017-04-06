@@ -44,6 +44,4 @@ deploy:
 
 addons:
   artifacts: true
-  paths:
-    - build/libs/spring-boot-test-0.0.1.jar
   debug: true
