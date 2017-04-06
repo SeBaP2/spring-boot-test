@@ -35,10 +35,10 @@ public class QuoteControllerTest {
         this.mockMvc.perform(get("/quotes/random"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.ID").value("1"))
-                .andExpect(jsonPath("$.title").value("title"))
+                .andExpect(jsonPath("$.rec_id").value("1"))
+                .andExpect(jsonPath("$.category").value("category"))
                 .andExpect(jsonPath("$.content").value("content"))
-                .andExpect(jsonPath("$.link").value("link"));
+                .andExpect(jsonPath("$.author_name").value("authorName"));
     }
 
     @Test
@@ -48,14 +48,14 @@ public class QuoteControllerTest {
         this.mockMvc.perform(get("/quotes/random"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value(is(nullValue())))
-                .andExpect(jsonPath("$.link").value(is(nullValue())))
+                .andExpect(jsonPath("$.rec_id").value(is(nullValue())))
+                .andExpect(jsonPath("$.category").value(is(nullValue())))
                 .andExpect(jsonPath("$.content").value(is(nullValue())))
-                .andExpect(jsonPath("$.ID").value(is(nullValue())));
+                .andExpect(jsonPath("$.author_name").value(is(nullValue())));
     }
 
     private static final class Fixtures {
-        private static final Quote QUOTE = new Quote(1L, "title", "content", "link");
-        private static final pl.seba.springtest.quotes.Quote DEFAULT_QUOTE = new Quote();
+        private static final Quote QUOTE = new Quote(1L, "category", "content", "authorName");
+        private static final Quote DEFAULT_QUOTE = new Quote();
     }
 }

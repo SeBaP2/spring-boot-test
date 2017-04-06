@@ -7,39 +7,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder(value = {"ID", "title", "content", "link"})
+@JsonPropertyOrder(value = {"rec_id", "category", "content", "author_name"})
 public final class Quote {
 
-    @JsonProperty("ID")
+    @JsonProperty("rec_id")
     private Long id;
-    private String title;
+
+    private String category;
+
     private String content;
-    private String link;
+
+    @JsonProperty("author_name")
+    private String authorName;
 
     public Quote() {
     }
 
-    public Quote(Long id, String title, String content, String link) {
+    public Quote(Long id, String category, String content, String authorName) {
         this.id = id;
-        this.title = title;
+        this.category = category;
         this.content = content;
-        this.link = link;
+        this.authorName = authorName;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCategory() {
+        return category;
     }
 
     public String getContent() {
         return content;
     }
 
-    public String getLink() {
-        return link;
+    public String getAuthorName() {
+        return authorName;
     }
 
     @Override
@@ -48,23 +52,23 @@ public final class Quote {
         if (o == null || getClass() != o.getClass()) return false;
         Quote quote = (Quote) o;
         return Objects.equals(id, quote.id) &&
-                Objects.equals(title, quote.title) &&
+                Objects.equals(category, quote.category) &&
                 Objects.equals(content, quote.content) &&
-                Objects.equals(link, quote.link);
+                Objects.equals(authorName, quote.authorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, link);
+        return Objects.hash(id, category, content, authorName);
     }
 
     @Override
     public String toString() {
         return "Quote{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
                 ", content='" + content + '\'' +
-                ", link='" + link + '\'' +
+                ", authorName='" + authorName + '\'' +
                 '}';
     }
 }
