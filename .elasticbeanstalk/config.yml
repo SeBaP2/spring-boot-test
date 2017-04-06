@@ -1,2 +1,2 @@
 deploy:
-  artifact: target/gs-rest-service-0.1.0.jar
+  artifact: build/libs/spring-boot-test-0.0.1.jar
